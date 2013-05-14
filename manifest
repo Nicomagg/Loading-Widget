@@ -1,8 +1,20 @@
-#appname: Loading-Widget
-#publisher: Alumno Informatorio
-#url: Informatorio2013
-#image: default_app_logo.png
-#appid: Load_TideSDK
-#desc: undefined
-#type: desktop
-#guid: 549c038f-5bee-41d7-94b4-38850cbc073f
+#appname:Loading-Widget
+#appid:Load_TideSDK
+#publisher:Alumno Informatorio
+#image:default_app_logo.png
+#url:Informatorio2013
+#guid:549c038f-5bee-41d7-94b4-38850cbc073f
+#desc:No description provided
+#type:desktop
+runtime:1.3.1-beta
+app:1.3.1-beta
+codec:1.3.1-beta
+database:1.3.1-beta
+filesystem:1.3.1-beta
+media:1.3.1-beta
+monkey:1.3.1-beta
+network:1.3.1-beta
+platform:1.3.1-beta
+process:1.3.1-beta
+ui:1.3.1-beta
+worker:1.3.1-beta
