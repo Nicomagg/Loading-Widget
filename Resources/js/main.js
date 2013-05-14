@@ -1,7 +1,6 @@
 initialize_slider = function() {
 	x=1
 	backwait=0
-	temporizador=0
 	$('#next-button').click(function() {
 		manualSlide('right')
 	})
@@ -11,7 +10,7 @@ initialize_slider = function() {
 	autoslide()
 };
 manualSlide = function(s) {
-	clearTimeout(temporizador)
+	window.clearTimeout(timer)
 	if (s=='right') {
 		if (x==(num_items-1)) {
 			slideTo(1)
@@ -35,50 +34,63 @@ aSlide = function() {
 		}else{
 			slideTo(x+1)
 		}
-		temporizador=setTimeout(aSlide,7000)
+		timer=window.setTimeout(aSlide,time*1000)
 	}else{
-		temporizador=setTimeout(aSlide,7000*(backwait+1))
+		timer=window.setTimeout(aSlide,time*1000*(backwait+1))
 		backwait--
 	}
 }
 autoslide = function() {
-	temporizador=setTimeout(aSlide,7000)
+	timer=window.setTimeout(aSlide,time*1000)
 };
 slideTo = function(p) {
 	option=(window.innerWidth*(p-1))
 	$('#slider-s').animate({'right':option+'px'},'slow')
 	x=p
 };
-image=[]
-links=['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/5.jpg','img/6.jpg','img/7.jpg','img/8.jpg','img/9.jpg','img/10.jpg']
+var image=[]
+var links=['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/5.jpg','img/6.jpg','img/7.jpg','img/8.jpg','img/9.jpg','img/10.jpg']
 $.each(links,function(i,elem) {
 	foto = new Image()
 	foto.src=elem
 	image.push(foto)
 })
+var timer
 $(document).ready(function() {
 	num_items=$('.feature').length+1
-	$('#container').css('height',window.innerHeight+'px')
 	$('#load').css('height',window.innerHeight+'px')
 	$('#ready').click(function(event) {
+		time=$('#tiempo').val()
+		if (!$.isNumeric(time)) {
+			$('#tiempo').css({'border':'1px solid red'})
+			return
+		}
 		event.preventDefault()
-		if (image.length>=4) {
-			$('#load').hide('slow')
-			$.each(image,function(i,elem){
-				$('#slider-s').append('<div class="feature" id=feature'+(image.length-i)+'></div>')
-				$('#feature'+(image.length-i)).css({
-					'background':'url("'+elem.src+'") no-repeat center center fixed',
-					'width':window.innerWidth,
-					'height':window.innerHeight
-				})
+		$('#load').hide('slow')
+		$.each(image,function(i,elem){
+			$('#slider-s').append('<div class="feature" id=feature'+(image.length-i)+'></div>')
+			$('#feature'+(image.length-i)).css({
+				'background':'url("'+elem.src+'") no-repeat center center fixed',
+				'width':window.innerWidth,
+				'height':window.innerHeight
 			})
-			num_items=$('.feature').length+1
-			$('#slider-s').css('width',num_items*window.innerWidth)
-			$('#splash').css('height',window.innerHeight)
-			$('#main').show('slow')
-			$('#container').css('height','0px')
-			initialize_slider()
-		};
+		})
+		num_items=$('.feature').length+1
+		$('#slider-s').css('width',num_items*window.innerWidth)
+		$('#splash').css('height',window.innerHeight)
+		$('#container').css('height','0px')
+		$('#main').show('slow')
+		initialize_slider()
+	})
+	$('#back-button').click(function() {
+		$('#main').hide('slow')
+		window.clearTimeout(timer)
+		$('#slider-s').css('right','0px')
+		$('#slider-s').empty()
+		$('#prev-button').unbind('click')
+		$('#next-button').unbind('click')
+		$('#container').css('height',window.innerHeight+'px')
+		$('#load').show('slow')
 	})
 	$(window).resize(function() {
 		$('#container').css('height',window.innerHeight+'px')
@@ -108,8 +120,10 @@ $(document).ready(function() {
 				alert('Error, imagen invalida')
 				$('#image input')[0].value=''
 			}
-
 		};
 	})
+	$( "#image" ).droppable({
+		drop: function( event, ui ) {alert('hola')}
+})
 });
 
