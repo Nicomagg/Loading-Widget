@@ -204,25 +204,18 @@ textarea {
 #load{
     background: #ececec;
     margin: 0px auto;
-    height: 568px;
-    width: 906px;
+    height: 480px;
+    width: 640px;
 }
 #image{
     background:rgba(0,0,0,0.6);
     border-radius: 3px;
     border:black solid 2px;
+    height: 300px
 }
-
-#image input{
-    margin: 150px auto;
-    padding-left: 130px;
-    width: 60%
-}
-
-#image button{
-    float: right;
-    margin: 150px auto;
-    margin-right: 130px;
+#image div{
+    text-align: center;
+    margin-top:140px;
 }
 #load a{
     float:left;

@@ -49,31 +49,21 @@ slideTo = function(p) {
 	x=p
 };
 var image=[]
-var links=['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/5.jpg','img/6.jpg','img/7.jpg','img/8.jpg','img/9.jpg','img/10.jpg']
-$.each(links,function(i,elem) {
-	foto = new Image()
-	foto.src=elem
-	image.push(foto)
-})
 var timer
 $(document).ready(function() {
 	num_items=$('.feature').length+1
 	$('#load').css('height',window.innerHeight+'px')
 	$('#ready').click(function(event) {
+		event.preventDefault()
 		time=$('#tiempo').val()
 		if (!$.isNumeric(time)) {
 			$('#tiempo').css({'border':'1px solid red'})
 			return
 		}
-		event.preventDefault()
 		$('#load').hide('slow')
 		$.each(image,function(i,elem){
 			$('#slider-s').append('<div class="feature" id=feature'+(image.length-i)+'></div>')
-			$('#feature'+(image.length-i)).css({
-				'background':'url("'+elem.src+'") no-repeat center center fixed',
-				'width':window.innerWidth,
-				'height':window.innerHeight
-			})
+			$('#feature'+(image.length-i)).append('<img src='+elem.src+' width='+window.innerWidth+' height='+window.innerHeight+'>')
 		})
 		num_items=$('.feature').length+1
 		$('#slider-s').css('width',num_items*window.innerWidth)
@@ -98,32 +88,22 @@ $(document).ready(function() {
 		$('#slider-s').css('width',num_items*window.innerWidth)
 		$('#splash').css('height',window.innerHeight)
 		$.each(image,function(i,elem){
-			$('#feature'+(image.length-i)).css({
-				'background':'url("'+elem.src+'") no-repeat center center fixed',
-				'width':window.innerWidth,
-				'height':window.innerHeight
-			})
+			a=$('#feature'+(image.length-i))
+			a.css({'width':window.innerWidth,'height':window.innerHeight})
+			b=a.children()
+			b.css({'width':window.innerWidth,'height':window.innerHeight})
 		})
 	})
-	$('#cargar').click(function(){
-		dirImg=$('#image input')[0].value
-		console.log(dirImg)
-		if (dirImg!='') {
-			dir=dirImg.split('\\').pop()
-			foto=new Image()
-			foto.src='img\\'+dir
-			foto.onload= function() {
-				image.push(foto)
-				$('#image input')[0].value=''
-			}
-			foto.onerror= function() {
-				alert('Error, imagen invalida')
-				$('#image input')[0].value=''
-			}
-		};
-	})
-	$( "#image" ).droppable({
-		drop: function( event, ui ) {alert('hola')}
-})
+	window.ondragover = function(e) { e.preventDefault(); return false };
+	window.ondrop = function(e) { e.preventDefault(); return false };
+	window.ondrop = function (event) {
+		event.preventDefault();
+		var files=event.dataTransfer.files
+		for (var i = 0; i < files.length; ++i) {
+			var foto=new Image()
+			foto.src=files[i].path
+			image.push(foto)
+		}
+		return false;
+	};
 });
-

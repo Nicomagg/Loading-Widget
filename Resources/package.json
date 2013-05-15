@@ -1,0 +1,14 @@
+{
+  "main": "index.html",
+  "name": "Magic Widget",
+  "window":{
+  	"toolbar":false,
+  	"width":640,
+  	"height":480,
+  	"min_width":640,
+  	"min_height":480,
+  	"max_width":1920,
+  	"max_height":1080,
+  	"position":"center"
+  }
+}
