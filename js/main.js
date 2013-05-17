@@ -48,14 +48,18 @@ slideTo = function(p) {
 	$('#slider-s').animate({'right':option+'px'},'slow')
 	x=p
 };
+error_callback = function(tx,error){};
+success_callback = function(tx){};
+
 var image=[]
 var timer
+var db = openDatabase('mydb', '1.0', 'my first database', 2 * 1024 * 1024);
 $(document).ready(function() {
 	num_items=$('.feature').length+1
 	$('#load').css('height',window.innerHeight+'px')
 	$('#ready').click(function(event) {
 		event.preventDefault()
-		if (image.length>1) {
+		if (image.length>0) {
 			time=$('#tiempo').val()
 			if (!$.isNumeric(time)) {
 				$('#tiempo').css({'border':'1px solid red'})
@@ -72,7 +76,9 @@ $(document).ready(function() {
 			$('#container').css('height','0px')
 			$('#main').show('slow')
 			initialize_slider()
-		};
+		}else{
+			alert('No hay imagenes cargadas.')
+		}
 	})
 	$('#back-button').click(function() {
 		$('#main').hide('slow')
@@ -101,15 +107,48 @@ $(document).ready(function() {
 	window.ondrop = function (event) {
 		event.preventDefault();
 		var files=event.dataTransfer.files
-		for (var i = 0; i < files.length; ++i) {
+		$.each(files,function(i,elem) {
 			var foto=new Image()
-			foto.src=files[i].path
+			var path=files[i].path
+			foto.src=path
+			var sql="INSERT INTO images (path) values (?)"
 			image.push(foto)
-		}
+			db.transaction(function(tx){
+  				tx.executeSql('CREATE TABLE IF NOT EXISTS images (path unique)');
+  				tx.executeSql(sql,[path],success_callback,error_callback);
+			})
+		})
 		return false;
 	};
 	$('#close-button').click(function(e) {
 		e.preventDefault()
 		window.close()
 	})
+	var gui = require('nw.gui');
+  	var win = gui.Window.get();
+	win.on('close', function() {
+    	localStorage.x=win.x;
+    	localStorage.y=win.y;
+    	localStorage.width=win.width;
+    	localStorage.height=win.height;
+    	this.close(true);
+  	});
+	if (localStorage.width && localStorage.height) {
+		win.resizeTo(parseInt(localStorage.width), parseInt(localStorage.height));
+		win.moveTo(parseInt(localStorage.x), parseInt(localStorage.y));
+		db.transaction(function (tx) {
+  			tx.executeSql('SELECT * FROM images', [], function (tx, results) {
+    			var len = results.rows.length, i;
+    			for (i = 0; i < len; i++) {
+    				var foto=new Image()
+					var path=results.rows.item(i).path
+					foto.src=path
+					image.push(foto)
+    			}
+  			});
+		});
+    }
+    win.show();
+	$('#ready').click()
 });
+//db.transaction(function(tx){tx.executeSql('DROP TABLE images');}) Y LA PUTA MADRE ALL BOYS

@@ -112,15 +112,16 @@ textarea {
 /*main*/
 #main{
     margin: 0px auto;
-    /*width: 906px;*/
     width: 100%
+}
+body{
+    -webkit-app-region:drag;
 }
 /*banner1*/
 #splash{
     background: rgba(0,0,0,0.6);
     float: left;
     overflow: hidden;
-    /*width:906px;*/
     width: 100%;
     height: 100%;
     z-index:0;
@@ -132,7 +133,6 @@ textarea {
 }
 .feature{
     float:left;
-    /*width:906px;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -152,6 +152,7 @@ textarea {
     cursor: pointer;  
 }
 #back-button{
+    -webkit-app-region:no-drag;
     background:rgba(0,0,0,0.6);
     border-radius:4px;
     bottom:40px;
@@ -163,15 +164,30 @@ textarea {
     z-index:1;
     cursor: pointer;  
 }
+#next-button{
+    -webkit-app-region:no-drag;
+}
+#prev-button{
+    -webkit-app-region:no-drag;
+}
 #close-button{
     background:rgba(0,0,0,0.6);
     border-radius:4px;
     height:25px;
-    margin-right:20px;
     position:absolute;
     width:25px;
     z-index:1;
     cursor: pointer;  
+}
+#move-button{
+    background:rgba(0,0,0,0.6);
+    border-radius:4px;
+    cursor: pointer;  
+    height:25px;
+    left:35px;
+    position:absolute;
+    width:25px;
+    z-index:1;
 }
 #image-button1{
     background: url('../img/flecha-izquierda-splash.png') no-repeat;
@@ -234,6 +250,7 @@ textarea {
     margin-top:115px;
 }
 #load a{
+    -webkit-app-region:no-drag;
     float:left;
     margin: 0px 50px ;
 }
