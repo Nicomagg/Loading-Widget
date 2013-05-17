@@ -163,11 +163,27 @@ textarea {
     z-index:1;
     cursor: pointer;  
 }
+#close-button{
+    background:rgba(0,0,0,0.6);
+    border-radius:4px;
+    height:25px;
+    margin-right:20px;
+    position:absolute;
+    width:25px;
+    z-index:1;
+    cursor: pointer;  
+}
 #image-button1{
     background: url('../img/flecha-izquierda-splash.png') no-repeat;
     height:15px;
     margin:5px 7px;
     width:10px;
+}
+#close-image{
+    background: url('../img/close.png') no-repeat;
+    height:15px;
+    margin:5px 6px;
+    width:12px;
 }
 #image-back{
     background: url('../img/back-button.png') no-repeat;
@@ -204,22 +220,22 @@ textarea {
 #load{
     background: #ececec;
     margin: 0px auto;
-    height: 480px;
-    width: 640px;
+    height: 300px;
+    width: 400px;
 }
 #image{
     background:rgba(0,0,0,0.6);
     border-radius: 3px;
     border:black solid 2px;
-    height: 300px
+    height: 250px
 }
 #image div{
     text-align: center;
-    margin-top:140px;
+    margin-top:115px;
 }
 #load a{
     float:left;
-    margin: 0px 150px ;
+    margin: 0px 50px ;
 }
 
 

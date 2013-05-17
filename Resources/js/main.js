@@ -55,22 +55,24 @@ $(document).ready(function() {
 	$('#load').css('height',window.innerHeight+'px')
 	$('#ready').click(function(event) {
 		event.preventDefault()
-		time=$('#tiempo').val()
-		if (!$.isNumeric(time)) {
-			$('#tiempo').css({'border':'1px solid red'})
-			return
-		}
-		$('#load').hide('slow')
-		$.each(image,function(i,elem){
-			$('#slider-s').append('<div class="feature" id=feature'+(image.length-i)+'></div>')
-			$('#feature'+(image.length-i)).append('<img src='+elem.src+' width='+window.innerWidth+' height='+window.innerHeight+'>')
-		})
-		num_items=$('.feature').length+1
-		$('#slider-s').css('width',num_items*window.innerWidth)
-		$('#splash').css('height',window.innerHeight)
-		$('#container').css('height','0px')
-		$('#main').show('slow')
-		initialize_slider()
+		if (image.length>1) {
+			time=$('#tiempo').val()
+			if (!$.isNumeric(time)) {
+				$('#tiempo').css({'border':'1px solid red'})
+				return
+			}
+			$('#load').hide('slow')
+			$.each(image,function(i,elem){
+				$('#slider-s').append('<div class="feature" id=feature'+(image.length-i)+'></div>')
+				$('#feature'+(image.length-i)).append('<img src='+elem.src+' width='+window.innerWidth+' height='+window.innerHeight+'>')
+			})
+			num_items=$('.feature').length+1
+			$('#slider-s').css('width',num_items*window.innerWidth)
+			$('#splash').css('height',window.innerHeight)
+			$('#container').css('height','0px')
+			$('#main').show('slow')
+			initialize_slider()
+		};
 	})
 	$('#back-button').click(function() {
 		$('#main').hide('slow')
@@ -106,4 +108,8 @@ $(document).ready(function() {
 		}
 		return false;
 	};
+	$('#close-button').click(function(e) {
+		e.preventDefault()
+		window.close()
+	})
 });
