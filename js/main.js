@@ -1,3 +1,16 @@
+function cambioSolapa(){
+	var chamu= document.getElementById('chamu');
+	var carga= document.getElementById('cargaIm');
+	if (chamu.style.display=='none'){
+		carga.style.display='none';
+		chamu.style.display='inline';
+	}else{
+		carga.style.display='inline';
+		chamu.style.display='none';
+	}
+}
+
+
 initialize_slider = function() {
 	x=1
 	backwait=0

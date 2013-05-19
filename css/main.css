@@ -21,6 +21,7 @@ textarea {
 body {
     font-size: 1em;
     line-height: 1.4;
+
 }
 
 /*
@@ -171,6 +172,7 @@ body{
     -webkit-app-region:no-drag;
 }
 #close-button{
+    left: 32%;
     background:rgba(0,0,0,0.6);
     border-radius:4px;
     height:25px;
@@ -196,6 +198,7 @@ body{
     width:10px;
 }
 #close-image{
+    left: 35%;
     background: url('../img/close.png') no-repeat;
     height:15px;
     margin:5px 6px;
@@ -233,21 +236,105 @@ body{
     width: 100%
 }
 /*load*/
+
 #load{
-    background: #ececec;
-    margin: 0px auto;
+    position: relative;
+    left: 32%;
+    background: #08222C;
     height: 300px;
     width: 400px;
 }
+#titulo{
+    margin: 0 auto;
+    text-align: center;
+    font-family: Comic Sans MS;
+    font-size: 45px;
+    color: #A9903C;
+
+}
+#slogan{
+    margin: 0 auto;
+    text-align: right;
+    font-family: French Script MT;
+    color: #A9903C;
+    font-size: 30px;
+}
+#contenedorPrinci{
+    background: rgba(0,0,0,0.6);
+}
+#cargaIm{
+    display: none;
+}
+#chamu{
+    display: inline;
+    position: relative;
+    color: white;
+    height: 110px; 
+    font-family: Bradley Hand ITC;
+    text-align: center;
+}
+#loadingCompany{
+    text-align: right;
+    padding-right: 5px;
+}
 #image{
-    background:rgba(0,0,0,0.6);
-    border-radius: 3px;
+    background:black;
+    border-radius: 7px;
     border:black solid 2px;
-    height: 250px
+    height: 62px;
+    text-align: center;
+    font-family: Consolas;
+    color:#A9903C;
+    padding-top: 10px;
 }
 #image div{
     text-align: center;
     margin-top:115px;
+}
+.segundos{
+    border: 0 solid;
+    padding-top: -20px;
+    font-family: Consolas;
+    color:#A9903C;
+}
+#tiempo{
+    width: 30px;
+    height: 15px;
+}
+#ready{
+    background: #A9903C;
+    position: relative;
+    left: 65%;
+    margin: 0 auto;
+    text-align: center;
+    height: 27px;
+    border-radius: 7px;
+    border: dashed 3px;
+    font-family: Consolas;
+}
+#ready:hover{
+    border-color: white;
+    color: white;
+}
+#cargaImagenes{
+    background: #A9903C;
+    position: relative;
+    left: 25%;
+    margin: 0 auto;
+    text-align: center;
+    width: 200px;
+    height: 30px;
+    border-radius: 7px;
+    border: inset 3px;
+    font-family: Consolas;
+    margin-top: 5px;
+}
+#cargaImagenes:hover{
+    border: outset 3px;
+    color: white;
+}
+#solapaImagen{
+
 }
 #load a{
     -webkit-app-region:no-drag;
