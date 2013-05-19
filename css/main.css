@@ -154,16 +154,20 @@ body{
 }
 #back-button{
     -webkit-app-region:no-drag;
-    background:rgba(0,0,0,0.6);
     border-radius:4px;
-    bottom:40px;
-    float:right;
-    height:25px;
-    margin-right:20px;
     position:relative;
-    width:100px;
-    z-index:1;
-    cursor: pointer;  
+    text-align: center;
+    height: 26px;
+    font-size: 13px;
+    border-radius: 7px;
+    border: outset 3px;
+    font-family: Texgy-regular;
+    background: black;
+    color: #ccc;
+    left: 41%;
+}
+#back-button:hover{
+    border: inset 3px;
 }
 #next-button{
     -webkit-app-region:no-drag;
@@ -172,7 +176,7 @@ body{
     -webkit-app-region:no-drag;
 }
 #close-button{
-    left: 32%;
+    left: 97.4%;
     background:rgba(0,0,0,0.6);
     border-radius:4px;
     height:25px;
@@ -204,12 +208,12 @@ body{
     margin:5px 6px;
     width:12px;
 }
-#image-back{
+/*#image-back{
     background: url('../img/back-button.png') no-repeat;
     height:15px;
     margin:5px auto;
     width:65px;
-}
+}*/
 .prev{
     background:rgba(0,0,0,0.6);
     border-radius:4px;
@@ -240,50 +244,26 @@ body{
 #load{
     position: relative;
     left: 32%;
-    background: #08222C;
+    background: #777777;
     height: 300px;
     width: 400px;
 }
 #titulo{
     margin: 0 auto;
     text-align: center;
-    font-family: Comic Sans MS;
+    font-family: Texgy-regular;
     font-size: 45px;
-    color: #A9903C;
+    color: black;
 
 }
-#slogan{
-    margin: 0 auto;
-    text-align: right;
-    font-family: French Script MT;
-    color: #A9903C;
-    font-size: 30px;
-}
-#contenedorPrinci{
-    background: rgba(0,0,0,0.6);
-}
-#cargaIm{
-    display: none;
-}
-#chamu{
-    display: inline;
-    position: relative;
-    color: white;
-    height: 110px; 
-    font-family: Bradley Hand ITC;
-    text-align: center;
-}
-#loadingCompany{
-    text-align: right;
-    padding-right: 5px;
-}
 #image{
+    margin-top: -25px;
     background:black;
     border-radius: 7px;
     border:black solid 2px;
-    height: 62px;
+    height: 122px;
     text-align: center;
-    font-family: Consolas;
+    font-family: Texgy-regular;
     color:#A9903C;
     padding-top: 10px;
 }
@@ -294,44 +274,28 @@ body{
 .segundos{
     border: 0 solid;
     padding-top: -20px;
-    font-family: Consolas;
-    color:#A9903C;
+    font-family: Texgy-regular;
+    color:black;
 }
 #tiempo{
     width: 30px;
-    height: 15px;
+    height: 14px;
 }
 #ready{
-    background: #A9903C;
+    background: black;
+    color: #ccc;
     position: relative;
-    left: 65%;
+    left: 41%;
     margin: 0 auto;
     text-align: center;
-    height: 27px;
-    border-radius: 7px;
-    border: dashed 3px;
-    font-family: Consolas;
+    height: 26px;
+    font-size: 13px;
+    border: outset 3px;
+    font-family: Texgy-regular;
+    border-radius:4px;
 }
 #ready:hover{
-    border-color: white;
-    color: white;
-}
-#cargaImagenes{
-    background: #A9903C;
-    position: relative;
-    left: 25%;
-    margin: 0 auto;
-    text-align: center;
-    width: 200px;
-    height: 30px;
-    border-radius: 7px;
     border: inset 3px;
-    font-family: Consolas;
-    margin-top: 5px;
-}
-#cargaImagenes:hover{
-    border: outset 3px;
-    color: white;
 }
 #solapaImagen{
 
